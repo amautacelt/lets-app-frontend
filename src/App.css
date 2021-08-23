@@ -36,3 +36,44 @@
     transform: rotate(360deg);
   }
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form input {
+  margin-bottom: 0.5rem;
+}
+
+.users-container {
+  display: inline-block;
+}
+
+.user-card {
+  border-width: 3px;
+  /* box-sizing: content-box; */
+  background-color: burlywood;
+  display: inline-block;
+  width: 550px;
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  display: inline-block;
+}
+
+.activity-card-container {
+  display: inline-block;
+}
+
+.activity-card {
+  border-width: 3px;
+  background-color: darkseagreen;
+  display: inline-block;
+  width: 550px;
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  display: inline-block;
+}
