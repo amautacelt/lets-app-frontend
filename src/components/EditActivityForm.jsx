@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function EditActivityForm ({ addActivity }) {
+export default function EditActivityForm ({ updateActivity }) {
 
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
@@ -9,12 +9,13 @@ export default function EditActivityForm ({ addActivity }) {
     const [duration, setDuration] = useState('');
 
     const handleSubmit = event => {
-        event.preventDefault()
+        event.preventDefault();
+        event.updateActivity()
 
         const activityData = { name, description, location, date_time, duration }
 
         const options = {
-            method: 'POST',
+            method: 'PATCH',
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json'
@@ -25,7 +26,7 @@ export default function EditActivityForm ({ addActivity }) {
 
         fetch(`http://localhost:3000/activities`, options)
             .then(response => response.json())
-            .then(addActivity);
+            .then(updateActivity);
 
 
         setName('')
@@ -36,55 +37,58 @@ export default function EditActivityForm ({ addActivity }) {
     }
 
     return (
-        <form className="activity-form" onSubmit={handleSubmit}>
-            <label htmlFor="activity-name">Edit activity name: </label>
-            <input 
-                type="text"
-                id="activity-name"
-                placeholder="activity name"
-                value={name}
-                onChange={event => setName(event.target.value)}
-            />
+        <div className="update-container">
+            <form className="update-form" onSubmit={handleSubmit}>
+                <label htmlFor="update-activity-name">Edit activity name: </label>
+                <input 
+                    type="text"
+                    id="update-activity-name"
+                    placeholder="activity name"
+                    value={name}
+                    onChange={event => setName(event.target.value)}
+                />
 
-            <label htmlFor="activity-description">Edit activity description: </label>
-            <input 
-                type="text"
-                id="activity-description"
-                placeholder="activity description"
-                value={description}
-                onChange={event => setDescription(event.target.value)}
-            />
+                <label htmlFor="update-activity-description">Edit activity description: </label>
+                <input 
+                    type="text"
+                    id="update-activity-description"
+                    placeholder="activity description"
+                    value={description}
+                    onChange={event => setDescription(event.target.value)}
+                />
 
-            <label htmlFor="activity-location">Enter activity location: </label>
-            <input 
-                type="text"
-                id="activity-location"
-                placeholder="activity location"
-                value={location}
-                onChange={event => setLocation(event.target.value)}
-            />
+                <label htmlFor="update-activity-location">Enter activity location: </label>
+                <input 
+                    type="text"
+                    id="update-activity-location"
+                    placeholder="activity location"
+                    value={location}
+                    onChange={event => setLocation(event.target.value)}
+                />
 
-            <label htmlFor="activity-date-time">Enter activity date and time: </label>
-            <input 
-                type="text"
-                id="activity-date-time"
-                placeholder="activity date and time"
-                value={date_time}
-                onChange={event => setDateTime(event.target.value)}
-            />
+                <label htmlFor="update-activity-date-time">Enter activity date and time: </label>
+                <input 
+                    type="text"
+                    id="update-activity-date-time"
+                    placeholder="activity date and time"
+                    value={date_time}
+                    onChange={event => setDateTime(event.target.value)}
+                />
 
-            <label htmlFor="activity-duration">Enter activity duration: </label>
-            <input 
-                type="text"
-                id="activity-duration"
-                placeholder="activity duration"
-                value={duration}
-                onChange={event => setDuration(event.target.value)}
-            />
+                <label htmlFor="update-activity-duration">Enter activity duration: </label>
+                <input 
+                    type="text"
+                    id="update-activity-duration"
+                    placeholder="activity duration"
+                    value={duration}
+                    onChange={event => setDuration(event.target.value)}
+                />
 
-            <input type="submit" value="create activity" />
+                <input type="submit" value="update activity" />
 
-        </form>
+            </form>
+        </div>
+        
     );
 
 }

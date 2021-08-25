@@ -37,6 +37,7 @@ export default function ActivityForm ({ addActivity, selectedUser }) {
 
     return (
         <form className="activity-form" onSubmit={handleSubmit}>
+            { selectedUser ? <h2 className="selected-user">{selectedUser.username} is creating an activity</h2> : <h3>Click on user's name to create activity</h3>}
             <label htmlFor="activity-name">Enter activity name: </label>
             <input 
                 type="text"

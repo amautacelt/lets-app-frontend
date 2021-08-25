@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 import './App.css';
 
+import NavBar from './components/NavBar';
 import UserForm from './components/UserForm';
 import UsersContainer from './containers/UsersContainer';
 import ActivitiesContainer from './containers/ActivitiesContainer';
@@ -48,25 +49,48 @@ function App() {
   //   useEffect(getActivities, []);
 
 
-  const updateActivity = (activity) => {
-    fetch(`http://localhost:3000/activities/${activity.id}`, {
-      method: 'PATCH',
-      headers: {
-        Accepts: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({activity})
-    })
-    .then(response => response.json())
-    .then(
-      (newActivity) => {
-        this.setState({
-          activities: this.state.activities.map(a => a.id === newActivity.id ? newActivity : a),
-      })
-    }
-  )
-    .catch((error) => console.error(error));
-  }
+
+  // const updateActivity = (activity) => {
+  //   fetch(`http://localhost:3000/activities/${activity.id}`, {
+  //     method: 'PATCH',
+  //     headers: {
+  //       Accepts: 'application/json',
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({activity})
+  //   })
+  //   .then(response => response.json())
+  //   .then(
+  //     (newActivity) => {
+  //       setActivities({
+  //         activities: activities.map(a => a.id === newActivity.id ? newActivity : a),
+  //       })
+  //     }
+  //   )
+  //   .catch((error) => console.error(error));
+  // }
+
+
+
+  // const updateActivity = (activity) => {
+  //   fetch(`http://localhost:3000/activities/${activity.id}`, {
+  //     method: 'PATCH',
+  //     headers: {
+  //       Accepts: 'application/json',
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({activity})
+  //   })
+  //   .then(response => response.json())
+  //   .then(
+  //     (newActivity) => {
+  //       this.setState({
+  //         activities: this.state.activities.map(a => a.id === newActivity.id ? newActivity : a),
+  //     })
+  //   }
+  // )
+  //   .catch((error) => console.error(error));
+  // }
 
 
   const deleteActivity = (activity) => {
@@ -89,6 +113,9 @@ function App() {
 
   return (
     <div className="App">
+
+      <NavBar />
+
       <h2>Create User</h2>
       <UserForm addUser={addUser} />
 
@@ -102,7 +129,7 @@ function App() {
       <ActivitiesContainer
         activities={activities}
         deleteActivity={deleteActivity}
-        updateActivity={updateActivity}
+        // updateActivity={updateActivity}
       />
     </div>
   );

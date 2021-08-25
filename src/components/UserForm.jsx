@@ -86,7 +86,7 @@ export default function UserForm({ addUser }) {
                 type="number" 
                 min="21" 
                 id="user-age" 
-                placeholder="age" 
+                placeholder="21 and older" 
                 value={age}
                 onChange={event => setAge(event.target.value)}
             />

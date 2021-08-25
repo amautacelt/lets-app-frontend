@@ -16,7 +16,7 @@ export default function User({ user, setSelectedUser }) {
             <p>Username: {user.username}</p>
             <p>Age: {user.age}</p>
             <p>Activities created:</p>
-                <ul>
+                <ul className="user-activities-list">
                     { activitiesCreated() }
                 </ul>
             {/* <p>Activities created: {user.activity}</p> */}
