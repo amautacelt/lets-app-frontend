@@ -38,12 +38,14 @@
 }
 
 body {
-  background-color: lightskyblue;
+  background-color: lavender;
 }
 
 .navbar-app-title {
-  background-color: lightskyblue;
   color: chocolate;
+  background-image: url("https://abagrad.com/wp-content/uploads/2020/11/talleres-extracurriculares-cronol1.jpg");
+  color: purple;
+  font-size: 50px;
 }
 
 form {
@@ -62,7 +64,8 @@ form {
 
 form input {
   margin-bottom: 0.5rem;
-  background-color: yellow;
+  background-color: lavender;
+  border-radius: 10px;
 }
 
 .users-container {
